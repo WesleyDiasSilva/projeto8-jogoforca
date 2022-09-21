@@ -1,0 +1,89 @@
+.parteSuperior{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 35px;
+  box-sizing: border-box;
+}
+
+.app{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btnEscolhePergunta{
+  width: 200px;
+  height:50px;
+  background-color: rgb(25, 165, 25);
+  color: white;
+  font-family: roboto;
+  font-weight: 500;
+  font-size: 18px;
+  border: none;
+  margin-top: 25px;
+  border-radius: 10px;
+}
+
+.ladoEsquerdo{
+  width: 50%;
+
+}
+
+.ladoDireito{
+
+  width: 50%;
+}
+
+img{
+  width: 250px;
+  height: 350px;
+}
+
+.letras{
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  align-items: center;
+}
+
+.letra{
+  width: 50px;
+  height: 50px;
+  margin-left: 25px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: rgb(63, 63, 63);
+  font-size: 18px;
+  color: white;
+}
+
+.chute{
+  margin-top: 15px;
+}
+
+input{
+  margin-right: 60px;
+  height: 25px;
+  width: 250px;
+}
+
+.jaSei{
+  font-family: Roboto;
+  padding: 10px;
+}
+
+.btnChutar{
+  width: 80px;
+  height: 40px;
+  background-color: rgb(215, 226, 255);
+  border: solid 1px rgb(144, 166, 229);
+  border-radius: 8px;
+  color: rgb(87, 113, 186);
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 16px;
+}
