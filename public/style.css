@@ -27,6 +27,12 @@
   border-radius: 10px;
 }
 
+.btnEscolhePergunta:hover{
+  background-color: rgb(44, 189, 44);
+  transition: .5s;
+  cursor: pointer;
+}
+
 .ladoEsquerdo{
   width: 50%;
 
@@ -59,6 +65,12 @@ img{
   background-color: rgb(63, 63, 63);
   font-size: 18px;
   color: white;
+  cursor: pointer;
+}
+
+.letra:hover{
+  background-color: rgb(80, 79, 79);
+  transition: .5s;
 }
 
 .chute{
@@ -66,14 +78,28 @@ img{
 }
 
 input{
-  margin-right: 60px;
+  margin-right: 30px;
   height: 25px;
   width: 250px;
+}
+
+.palavra{
+  font-family: Roboto;
+  font-size: 25px;
+  margin-bottom: 15px;
+}
+
+.containerPalavra{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .jaSei{
   font-family: Roboto;
   padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .btnChutar{
@@ -86,4 +112,10 @@ input{
   font-family: Roboto;
   font-weight: 700;
   font-size: 16px;
+  cursor: pointer;
+}
+
+.btnChutar:hover{
+  background-color: rgb(237, 242, 255);
+  transition: .5s;
 }
