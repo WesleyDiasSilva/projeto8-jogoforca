@@ -16,10 +16,13 @@ function App() {
   let [acertos, setAcertos] = React.useState([]);
   let [error, setError] = React.useState([]);
   console.log(palavraAtual)
+
   function mudaPalavra(){
     setBotaoPalavra(true)
     setPalavraAtual(palavras[Math.floor((Math.random()*200))]);
     console.log(palavraAtual)
+    setAcertos([]);
+    setError([])
   }
 
   function verificaLetra(letra){
