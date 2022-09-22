@@ -12,7 +12,8 @@ function App() {
 
   let [palavraAtual, setPalavraAtual] = React.useState(palavras[Math.floor((Math.random()*200))]);
   let [botaoPalavra, setBotaoPalavra] = React.useState(false);
-  let [tentativas, setTentativas] = React.useState([]);
+  let [disableBtn, setDisableBtn] = React.useState(true);
+  let [tentativas, setTentativas] = React.useState(0);
   let [acertos, setAcertos] = React.useState([]);
   let [error, setError] = React.useState([]);
   console.log(palavraAtual)
@@ -20,24 +21,26 @@ function App() {
   function mudaPalavra(){
     setBotaoPalavra(true)
     setPalavraAtual(palavras[Math.floor((Math.random()*200))]);
-    console.log(palavraAtual)
+    setDisableBtn(false)
     setAcertos([]);
-    setError([])
+    setError([]);
+    setTentativas(0);
   }
 
-  function verificaLetra(letra){
+  function verificaLetra(target, letra){
+    target.disabled = true
+    
     if(palavraAtual.includes(letra)){
       setAcertos([...acertos, letra])
-      console.log('Acerto:',acertos)
-      return true
+      
     }else{
       setError([...error, letra]);
-      console.log('Erro',error)
-      return false
+      setTentativas(tentativas +1)
     }
   }
 
   function trocaClasseLetra(letra){
+    
     if(acertos.includes(letra)){
       return 'letraAcertou';
     }else if(error.includes(letra)){
@@ -62,7 +65,7 @@ function App() {
   return (
     <div className='app'>
       <div className='parteSuperior'> 
-        <img src= {imagens[0]} alt='teste'/>     
+        <img src= {imagens[tentativas]} alt='teste'/>     
         <div className='containerPalavra'>
           <button onClick={mudaPalavra} className='btnEscolhePergunta'>Escolher Palavra</button>
           <div>
@@ -74,7 +77,8 @@ function App() {
 
         <div className='letrasCima'>{alfabeto.map((letra, index) => { 
           if(index < 13){
-            return <button onClick={({target}) => verificaLetra(target.innerText.toLowerCase())} className={trocaClasseLetra(letra)} key={index}>{letra.toUpperCase()}</button>
+            return <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={trocaClasseLetra(letra)} key={index}>{letra.toUpperCase()}
+            </button>
           }
       })}</div>
 
@@ -82,7 +86,7 @@ function App() {
 
         {alfabeto.map((letra, index) => { 
           if(index >= 13){
-            return <button onClick={({target}) => verificaLetra(target.value)} className={trocaClasseLetra(letra)} key={index}>{letra.toUpperCase()}</button>
+            return <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={trocaClasseLetra(letra)} key={index}>{letra.toUpperCase()}</button>
           }
       })}
 
@@ -90,8 +94,8 @@ function App() {
       </div>
       <div className='chute'>
         <label className='jaSei'>Já sei a palavra!</label>
-        <input type='text'/>
-        <button className='btnChutar'>Chutar</button>
+        <input type='text' disabled={disableBtn}/>
+        <button disabled={disableBtn} className='btnChutar'>Chutar</button>
       </div>
     </div>
   )
