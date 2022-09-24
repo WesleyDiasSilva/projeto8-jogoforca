@@ -19,6 +19,7 @@ function App() {
   let [acertos, setAcertos] = React.useState([]);
   let [error, setError] = React.useState([]);
   let [valorInput, setValorInput] = React.useState('');
+  let [palavraNaTela, setPalavraNaTela] = React.useState([]);
   console.log(palavraAtual)
   
  function alteraInput(target){
@@ -29,15 +30,13 @@ function App() {
   function mudaPalavra(){
     setBotaoPalavra(true)
     setJogoFinalizado(false);
-    setPalavraAtual(palavras[Math.floor((Math.random()*200))]);
+    setPalavraAtual('cúpíáçôéã');
     setDisableBtn(false)
     setAcertos([]);
     setError([]);
     setTentativas(0);
     setValorInput('')
   }
-
-
 
   function finalizaJogo(result){
     setJogoFinalizado(true);
@@ -47,23 +46,13 @@ function App() {
       setClassFinalizado('palavra finalizadoGanhou')
       return {class: 'ganhouJogo'}
     }else{
-      setClassFinalizado('palavra finalizadoPerdeu')
+      setClassFinalizado('palavra finalizadoPerdeu');
+      setTentativas(6)
       return {class: 'perdeuJogo'}
     }
   }
 
-  function verificaLetra(target, letra){
-    target.disabled = true
-
-    if(palavraAtual.includes(letra)){
-      setAcertos([...acertos, letra])
-      
-    }else{
-      setError([...error, letra]);
-      setTentativas(tentativas +1)
-    }
-
-  }
+  
 
   function trocaClasseLetra(letra){
     
@@ -80,7 +69,137 @@ function App() {
   const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   const imagens = [imagem0, imagem1, imagem2, imagem3, imagem4, imagem5, imagem6]
 
+  function verificaLetra(target, letra){
+    target.disabled = true
+    if(palavraAtual.includes('ç')){
+      if(letra === 'c'){
+        setAcertos([...acertos, 'c'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('á')){
+      if(letra === 'a'){
+        setAcertos([...acertos, 'a'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('ã')){
+      if(letra === 'a'){
+        setAcertos([...acertos, 'a'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('é')){
+      if(letra === 'e'){
+        setAcertos([...acertos, 'e'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('ê')){
+      if(letra === 'e'){
+        setAcertos([...acertos, 'e'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('í')){
+      if(letra === 'i'){
+        setAcertos([...acertos, 'i'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('ô')){
+      if(letra === 'o'){
+        setAcertos([...acertos, 'o'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('ó')){
+      if(letra === 'o'){
+        setAcertos([...acertos, 'o'])
+        return;
+      }
+    }
+
+    if(palavraAtual.includes('ú')){
+      if(letra === 'u'){
+        setAcertos([...acertos, 'u'])
+        return;
+      }
+    }
+   
+
+    if(palavraAtual.includes(letra)){
+      setAcertos([...acertos, letra])
+    }else{
+      setError([...error, letra]);
+      setTentativas(tentativas +1)
+    }
+  }
+
+
   function palavraUsuario(letra){
+    if(letra === 'ç'){
+      if(acertos.includes('c')){
+        // setPalavraNaTela(...palavraNaTela,'ç')
+        return 'ç'
+    }
+  }
+
+  if(letra === 'á'){
+    if(acertos.includes('a')){
+      return 'á'
+    }
+  }
+
+  if(letra === 'ã'){
+    if(acertos.includes('a')){
+      return 'ã'
+    }
+  }
+
+  if(letra === 'é'){
+    if(acertos.includes('e')){
+      return 'é'
+    }
+  }
+
+  if(letra === 'ê'){
+    if(acertos.includes('e')){
+      return 'ê'
+    }
+  }
+
+  if(letra === 'í'){
+    if(acertos.includes('i')){
+      return 'í'
+    }
+  }
+
+  if(letra === 'ó'){
+    if(acertos.includes('o')){
+      return 'ó'
+    }
+  }
+
+  if(letra === 'ô'){
+    if(acertos.includes('o')){
+      return 'ô'
+    }
+  }
+
+  if(letra === 'ú'){
+    if(acertos.includes('u')){
+      return 'ú'
+    }
+  }
+
     if(acertos.includes(letra)){
       return letra
     }else{
