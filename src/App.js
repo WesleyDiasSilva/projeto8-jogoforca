@@ -19,9 +19,9 @@ function App() {
   let [acertos, setAcertos] = React.useState([]);
   let [error, setError] = React.useState([]);
   let [valorInput, setValorInput] = React.useState('');
-  let [palavraNaTela, setPalavraNaTela] = React.useState([]);
+  let [palavraNaTela, setPalavraNaTela] = React.useState([palavraAtual.split('')]);
   console.log(palavraAtual)
-  
+
  function alteraInput(target){
   setValorInput(target)
  }
@@ -30,7 +30,7 @@ function App() {
   function mudaPalavra(){
     setBotaoPalavra(true)
     setJogoFinalizado(false);
-    setPalavraAtual('cúpíáçôéã');
+    setPalavraAtual(palavras[Math.floor((Math.random()*200))]);
     setDisableBtn(false)
     setAcertos([]);
     setError([]);
@@ -139,6 +139,9 @@ function App() {
       setAcertos([...acertos, letra])
     }else{
       setError([...error, letra]);
+      if(tentativas > 4){
+        finalizaJogo(false)   
+       }
       setTentativas(tentativas +1)
     }
   }
@@ -147,7 +150,6 @@ function App() {
   function palavraUsuario(letra){
     if(letra === 'ç'){
       if(acertos.includes('c')){
-        // setPalavraNaTela(...palavraNaTela,'ç')
         return 'ç'
     }
   }
@@ -224,7 +226,7 @@ function App() {
 
         <div className='letrasCima'>{alfabeto.map((letra, index) => { 
           if(index < 13){
-            return <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={trocaClasseLetra(letra)} key={index}>{letra.toUpperCase()}
+            return <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={!disableBtn ?trocaClasseLetra(letra): 'desabilitados'} key={index}>{letra.toUpperCase()}
             </button>
           }
       })}</div>
@@ -233,7 +235,7 @@ function App() {
 
         {alfabeto.map((letra, index) => { 
           if(index >= 13){
-            return <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={trocaClasseLetra(letra)} key={index}>{letra.toUpperCase()}</button>
+            return <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={!disableBtn ?trocaClasseLetra(letra): 'desabilitados'} key={index}>{letra.toUpperCase()}</button>
           }
       })}
 

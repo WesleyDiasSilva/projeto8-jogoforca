@@ -62,10 +62,11 @@ img{
   margin-bottom: 15px;
   border-radius: 8px;
   border: none;
-  background-color: rgb(63, 63, 63);
+  background-color: rgb(195, 214, 255);
   font-size: 18px;
-  color: white;
+  color: rgb(83, 128, 197);
   cursor: pointer;
+  font-weight: bold;
 }
 
 .letraAcertou{
@@ -94,7 +95,8 @@ img{
 }
 
 .letra:hover{
-  background-color: rgb(80, 79, 79);
+  background-color: rgb(69, 145, 232);
+  color: white;
   transition: .5s;
 }
 
@@ -152,4 +154,16 @@ input{
 
 .finalizadoPerdeu{
   color: red;
+}
+
+.desabilitados{
+  background-color: rgb(134, 134, 134);
+  width: 50px;
+  height: 50px;
+  margin-left: 25px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: none;
+  font-size: 18px;
+  color: rgb(37, 37, 37);
 }
