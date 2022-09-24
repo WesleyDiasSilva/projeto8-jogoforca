@@ -19,14 +19,12 @@ function App() {
   let [acertos, setAcertos] = React.useState([]);
   let [error, setError] = React.useState([]);
   let [valorInput, setValorInput] = React.useState('');
-  console.log(palavraAtual)
 
   let contador = 0;
 
  function alteraInput(target){
   setValorInput(target)
  }
-
 
   function mudaPalavra(){
     setBotaoPalavra(true)
@@ -53,8 +51,6 @@ function App() {
     }
   }
 
-  
-
   function trocaClasseLetra(letra){
     
     if(acertos.includes(letra)){
@@ -65,7 +61,6 @@ function App() {
       return 'letra'
     }
   }
-
 
   const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
   const imagens = [imagem0, imagem1, imagem2, imagem3, imagem4, imagem5, imagem6]
@@ -146,7 +141,6 @@ function App() {
     }
   }
 
-
   function palavraUsuario(letra){
     if(letra === 'ç'){
       if(acertos.includes('c')){
@@ -223,6 +217,20 @@ function App() {
       return '_ '
     }
   }
+
+  document.addEventListener('keydown', enviaEnter)
+  function enviaEnter(e){
+    if(e.key === 'Enter'){
+      if(valorInput !== ''){
+        if(valorInput.toLowerCase() === palavraAtual){
+          finalizaJogo(true)
+        }else{
+          finalizaJogo(false)
+        }
+      }
+    }
+  }
+
   return (
     <div className='app'>
       <div className='parteSuperior'> 
@@ -249,7 +257,7 @@ function App() {
 
         {alfabeto.map((letra, index) => { 
           if(index >= 13){
-            return <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={!disableBtn ?trocaClasseLetra(letra): 'desabilitados'} key={index}>{letra.toUpperCase()}</button>
+            return <button disabled={disableBtn} onKeyPress={(e) => console.log(e)} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={!disableBtn ?trocaClasseLetra(letra): 'desabilitados'} key={index}>{letra.toUpperCase()}</button>
           }
       })}
 
@@ -261,7 +269,6 @@ function App() {
         <input value={valorInput} onChange={(e) => alteraInput(e.target.value)} type='text' disabled={disableBtn}/>
         <button disabled={disableBtn} onClick={() => (valorInput.toLowerCase() === palavraAtual ? finalizaJogo(true) : finalizaJogo(false))} className='btnChutar'>Chutar</button>
       </div>
-
     </div>
   )
 }
