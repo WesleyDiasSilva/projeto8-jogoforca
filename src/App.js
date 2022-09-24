@@ -19,8 +19,9 @@ function App() {
   let [acertos, setAcertos] = React.useState([]);
   let [error, setError] = React.useState([]);
   let [valorInput, setValorInput] = React.useState('');
-  let [palavraNaTela, setPalavraNaTela] = React.useState([palavraAtual.split('')]);
   console.log(palavraAtual)
+
+  let contador = 0;
 
  function alteraInput(target){
   setValorInput(target)
@@ -134,7 +135,6 @@ function App() {
       }
     }
    
-
     if(palavraAtual.includes(letra)){
       setAcertos([...acertos, letra])
     }else{
@@ -150,65 +150,79 @@ function App() {
   function palavraUsuario(letra){
     if(letra === 'ç'){
       if(acertos.includes('c')){
+        contador++
         return 'ç'
     }
   }
 
   if(letra === 'á'){
     if(acertos.includes('a')){
+      contador++
       return 'á'
     }
   }
 
   if(letra === 'ã'){
     if(acertos.includes('a')){
+      contador++
       return 'ã'
     }
   }
 
   if(letra === 'é'){
     if(acertos.includes('e')){
+      contador++
       return 'é'
     }
   }
 
   if(letra === 'ê'){
     if(acertos.includes('e')){
+      contador++
       return 'ê'
     }
   }
 
   if(letra === 'í'){
     if(acertos.includes('i')){
+      contador++
       return 'í'
     }
   }
 
   if(letra === 'ó'){
     if(acertos.includes('o')){
+      contador++
       return 'ó'
     }
   }
 
   if(letra === 'ô'){
     if(acertos.includes('o')){
+      contador++
       return 'ô'
     }
   }
 
   if(letra === 'ú'){
     if(acertos.includes('u')){
+      contador++
       return 'ú'
     }
   }
-
+  if(contador > palavraAtual.length -1){
+    finalizaJogo(true)
+  }
     if(acertos.includes(letra)){
+      contador++
+      if(contador > palavraAtual.length -1){
+        finalizaJogo(true)
+      }
       return letra
     }else{
       return '_ '
     }
   }
-
   return (
     <div className='app'>
       <div className='parteSuperior'> 
