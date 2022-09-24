@@ -19,6 +19,7 @@ function App() {
   let [acertos, setAcertos] = React.useState([]);
   let [error, setError] = React.useState([]);
   let [valorInput, setValorInput] = React.useState('');
+  console.log(palavraAtual)
 
   let contador = 0;
 
@@ -43,6 +44,7 @@ function App() {
     setBotaoPalavra(false);
     if(result){
       setClassFinalizado('palavra finalizadoGanhou')
+      setTentativas(0)
       return {class: 'ganhouJogo'}
     }else{
       setClassFinalizado('palavra finalizadoPerdeu');
