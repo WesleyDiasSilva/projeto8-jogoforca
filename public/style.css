@@ -15,22 +15,11 @@
 }
 
 .btnEscolhePergunta{
-  width: 200px;
-  height:50px;
-  background-color: rgb(25, 165, 25);
-  color: white;
-  font-family: roboto;
-  font-weight: 500;
-  font-size: 18px;
-  border: none;
-  margin-top: 25px;
-  border-radius: 10px;
+ 
 }
 
 .btnEscolhePergunta:hover{
-  background-color: rgb(44, 189, 44);
-  transition: .5s;
-  cursor: pointer;
+ 
 }
 
 .ladoEsquerdo{
@@ -123,30 +112,6 @@ input{
   justify-content: space-between;
 }
 
-.jaSei{
-  font-family: Roboto;
-  padding: 10px;
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.btnChutar{
-  width: 80px;
-  height: 40px;
-  background-color: rgb(215, 226, 255);
-  border: solid 1px rgb(144, 166, 229);
-  border-radius: 8px;
-  color: rgb(87, 113, 186);
-  font-family: Roboto;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.btnChutar:hover{
-  background-color: rgb(237, 242, 255);
-  transition: .5s;
-}
 
 .finalizadoGanhou{
   color: green;

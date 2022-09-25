@@ -7,6 +7,7 @@ import imagem4 from './assets/forca4.png'
 import imagem5 from './assets/forca5.png'
 import imagem6 from './assets/forca6.png'
 import palavras from './Palavras'
+import styled from 'styled-components'
 
 function App() {
 
@@ -239,7 +240,7 @@ function App() {
         <img src= {imagens[tentativas]} alt='teste'/>   
           
         <div className='containerPalavra'>
-          <button onClick={mudaPalavra} className='btnEscolhePergunta'>Escolher Palavra</button>
+          <ButtonEscolhePalavra onClick={mudaPalavra}>Escolher Palavra</ButtonEscolhePalavra>
           <div>
             {jogoFinalizado ? <span className={classFinalizado}>{palavraAtual}</span> : botaoPalavra ? palavraAtual.split('').map((l, index) => <span key={index} className='palavra'>{palavraUsuario(l)}</span>): ''}
           </div>
@@ -259,20 +260,73 @@ function App() {
 
         {alfabeto.map((letra, index) => { 
           if(index >= 13){
-            return <button disabled={disableBtn} onKeyPress={(e) => console.log(e)} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={!disableBtn ?trocaClasseLetra(letra): 'desabilitados'} key={index}>{letra.toUpperCase()}</button>
+            return (
+            <button disabled={disableBtn} onClick={({target}) => verificaLetra(target, target.innerText.toLowerCase())} className={!disableBtn ? trocaClasseLetra(letra): 'desabilitados'} key={index}>{letra.toUpperCase()}
+            </button>
+            )
           }
       })}
 
         </div>
       </div>
 
-      <div className='chute'>
-        <label className='jaSei'>Já sei a palavra!</label>
-        <input value={valorInput} onChange={(e) => alteraInput(e.target.value)} type='text' disabled={disableBtn}/>
-        <button disabled={disableBtn} onClick={() => (valorInput.toLowerCase() === palavraAtual ? finalizaJogo(true) : finalizaJogo(false))} className='btnChutar'>Chutar</button>
+      <div>
+        <LabelInput className='jaSei'>Já sei a palavra!</LabelInput>
+
+        <Input value={valorInput} onChange={(e) => alteraInput(e.target.value)} type='text' disabled={disableBtn}></Input>
+
+        <ButtonChute disabled={disableBtn} onClick={() => (valorInput.toLowerCase() === palavraAtual ? finalizaJogo(true) : finalizaJogo(false))}>Chutar</ButtonChute>
       </div>
     </div>
   )
 }
 
 export default App
+
+const Input = styled.input`
+  margin-right: 30px;
+  height: 25px;
+  width: 250px;
+`
+
+const ButtonChute = styled.button`
+  width: 80px;
+  height: 40px;
+  background-color: rgb(215, 226, 255);
+  border: solid 1px rgb(144, 166, 229);
+  border-radius: 8px;
+  color: rgb(87, 113, 186);
+  font-family: Roboto;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  &:hover{
+    background-color: rgb(237, 242, 255);
+    transition: .5s;
+  }
+`
+
+const LabelInput = styled.label`
+  font-family: Roboto;
+  padding: 10px;
+  font-weight: 500;
+  font-size: 18px;
+`
+
+const ButtonEscolhePalavra = styled.button`
+   width: 200px;
+  height:50px;
+  background-color: rgb(25, 165, 25);
+  color: white;
+  font-family: roboto;
+  font-weight: 500;
+  font-size: 18px;
+  border: none;
+  margin-top: 25px;
+  border-radius: 10px;
+  &:hover{
+    background-color: rgb(44, 189, 44);
+    transition: .5s;
+    cursor: pointer;
+  }
+`
